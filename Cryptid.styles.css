@@ -1,0 +1,37 @@
+/* /Pages/Index.razor.rz.scp.css */
+.container[b-1n5gxd2z59] {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.button[b-1n5gxd2z59] {
+    margin-top: 10px;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.button > a[b-1n5gxd2z59] {
+    text-decoration: none;
+    color: white;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+/* /Shared/NavMenu.razor.rz.scp.css */
+.container[b-yx2wnrdf05] {
+    padding: 10px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.title[b-yx2wnrdf05] {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.home[b-yx2wnrdf05] {
+    color: white;
+}
