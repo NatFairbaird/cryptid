@@ -1,0 +1,42 @@
+﻿<div class="container">
+    <div>
+        <div class="instruction">Select difficulty:</div>
+        <div class="selection">
+            @foreach(var difficulty in Difficulties)
+            {
+                <div
+                    class="select-item @(difficulty.Selected ? "selected" : "")"
+                    @onclick="() => HandleDifficultyClick(difficulty.Text)">
+                        @difficulty.Text
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <div class="instruction">Select your player:</div>
+        <div class="selection">
+            @foreach(var playerOption in PlayerOptions)
+            {
+                <div
+                    class="select-item @(playerOption.Selected ? "selected": "")"
+                    @onclick="() => HandlePlayerClick(playerOption.Text)">
+                        @((MarkupString)playerOption.Text)
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <div class="instruction">Select the other players:</div>
+        <div class="selection">
+            @foreach(var playerOption in OtherPlayerOptions)
+            {
+                <div
+                    class="select-item @(playerOption.Selected ? "selected": "") @(playerOption.Disabled ? "disabled" : "")"
+                    @onclick="() => HandleOtherPlayerClick(playerOption.Text)">
+                        @((MarkupString)playerOption.Text)
+                </div>
+            }
+        </div>
+    </div>
+    <Button Disabled="@(!ValidForm)" ClickEvent="@HandleButtonClick">Next</Button>
+</div>

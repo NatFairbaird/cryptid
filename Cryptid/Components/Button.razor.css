@@ -1,0 +1,13 @@
+﻿.button {
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.button.disabled {
+    background-color: var(--primary-faded);
+    cursor: not-allowed;
+}
