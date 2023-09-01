@@ -1,5 +1,14 @@
-﻿@page "/create"
+﻿@attribute [Route(Path)]
+@using Cryptid.Components.Create;
 
 <PageTitle>Cryptid - Create</PageTitle>
 
-<h1>Create but this time slightly different</h1>
+@if(State == CreateState.SelectDifficulty)
+{
+    <SelectDifficulty Submit="@SubmitDifficulty"/>
+}
+
+@if(State == CreateState.SelectRule)
+{
+    <div>Select Rule</div>
+}
