@@ -4,7 +4,7 @@ namespace Cryptid.Pages
 {
     public partial class Create
     {
-        public const string Path = "/create";
+        public const string Path = "create";
 
         private CreateState State { get; set; }
 
