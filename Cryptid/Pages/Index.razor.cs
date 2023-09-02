@@ -9,7 +9,7 @@ namespace Cryptid.Pages
 
         private void HandleNewGameClick()
         {
-            Console.Out.WriteLine($"Navigation Manager, BaseUri: {NavigationManager.BaseUri}, Uri: {NavigationManager.Uri}");
+            NavigationManager.NavigateTo($"{NavigationManager.BaseUri}{Create.Path}");
         }
     }
 }
