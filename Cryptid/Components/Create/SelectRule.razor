@@ -1,0 +1,20 @@
+﻿<div class="container">
+    <div>You are playing as @((MarkupString)Player.ToHtmlString())</div>
+    <EditForm Model="@GameToCreate" Context="CurrentEditContext" style="
+        display:flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;">
+        <DataAnnotationsValidator />
+        <label>
+            Enter your rule number:
+            <ValidationMessage For="() => GameToCreate.RuleNumber" />
+            <IntInput style="width: 50px" @bind-Value=GameToCreate.RuleNumber />
+        </label>
+        @if(CurrentEditContext.IsModified() && CurrentEditContext.Validate())
+        {
+            <div>You entered @GameToCreate.RuleNumber</div>
+            <Button DisplayValue="Start Game"/>
+        }
+    </EditForm>
+</div>

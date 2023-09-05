@@ -1,0 +1,10 @@
+﻿input {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+input.modified {
+    border-radius: 2px;
+}

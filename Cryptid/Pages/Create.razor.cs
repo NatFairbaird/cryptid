@@ -8,6 +8,8 @@ namespace Cryptid.Pages
 
         private CreateState State { get; set; }
 
+        private Player Player { get; set; }
+
         public Create()
         {
             State = CreateState.SelectDifficulty;
@@ -15,8 +17,8 @@ namespace Cryptid.Pages
 
         private void SubmitDifficulty(Difficulty difficulty, Player player, List<Player> otherPlayers)
         {
+            Player = player;
             State = CreateState.SelectRule;
-            Console.Out.WriteLine(State);
             StateHasChanged();
         }
 

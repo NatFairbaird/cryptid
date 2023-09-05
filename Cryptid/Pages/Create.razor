@@ -5,10 +5,10 @@
 
 @if(State == CreateState.SelectDifficulty)
 {
-    <SelectDifficulty Submit="@SubmitDifficulty"/>
+    <SelectDifficulty Submit="@SubmitDifficulty" />
 }
 
 @if(State == CreateState.SelectRule)
 {
-    <div>Select Rule</div>
+    <SelectRule Player="@Player" />
 }
