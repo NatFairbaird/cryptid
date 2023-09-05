@@ -6,7 +6,7 @@ namespace Cryptid.Components
     public partial class Button
     {
         [Parameter]
-        public RenderFragment? ChildContent { get; set; }
+        public string DisplayValue { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> ClickEvent { get; set; }
