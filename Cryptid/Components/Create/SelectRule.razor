@@ -13,7 +13,27 @@
         </label>
         @if(CurrentEditContext.IsModified() && CurrentEditContext.Validate())
         {
-            <div>You entered @GameToCreate.RuleNumber</div>
+            <div style="
+                height: 20px;
+                display:flex;
+                flex-direction: row;
+                gap: 4px;">
+                @if(SelectedRule.IsInverse)
+                {
+                    <Icon IconType=@IconType.Cross Color=@IconColor.Red />
+                }
+                @if(SelectedRule.RuleGroup is RuleGroup.WithinOneSpace or RuleGroup.WithinTwoSpaces or RuleGroup.WithinThreeSpaces)
+                {
+                    <Icon IconType=@IconType.LessThanOrEqual Color=@IconColor.Black />
+                    @switch(SelectedRule.RuleGroup)
+                    {
+                        case RuleGroup.WithinOneSpace: <Icon IconType=@IconType.One Color=@IconColor.Black /> break;
+                        case RuleGroup.WithinTwoSpaces: <Icon IconType=@IconType.Two Color=@IconColor.Black /> break;
+                        case RuleGroup.WithinThreeSpaces: <Icon IconType=@IconType.Three Color=@IconColor.Black /> break;
+                    }
+                }
+            </div>
+            <div style="text-align: justify; text-justify: inter-word;">@SelectedRule.Text</div>
             <Button DisplayValue="Start Game"/>
         }
     </EditForm>

@@ -1,4 +1,5 @@
-﻿using Cryptid.Models.Enums;
+﻿using Cryptid.Domain;
+using Cryptid.Domain.Enums;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,11 +12,9 @@ namespace Cryptid.Components.Create
 
         private Game GameToCreate { get; set; } = new Game();
 
+        private Dictionary<int, Rule> PlayerRules => Player.GetRules();
 
-        public void HandleRuleNumberChanged(int ruleNumber)
-        {
-            Console.Out.WriteLine(ruleNumber);
-        }
+        private Rule SelectedRule => PlayerRules[GameToCreate.RuleNumber];
 
         private class Game
         {

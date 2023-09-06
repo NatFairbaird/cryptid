@@ -1,4 +1,4 @@
-﻿using Cryptid.Models.Enums;
+﻿using Cryptid.Domain.Enums;
 
 namespace Cryptid.Pages
 {
