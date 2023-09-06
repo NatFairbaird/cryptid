@@ -1,4 +1,4 @@
-﻿namespace Cryptid.Models.Enums
+﻿namespace Cryptid.Domain.Enums
 {
     public enum Difficulty
     {
