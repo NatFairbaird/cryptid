@@ -17,6 +17,7 @@
                 height: 20px;
                 display:flex;
                 flex-direction: row;
+                align-items: center;
                 gap: 4px;">
                 @if(SelectedRule.IsInverse)
                 {
@@ -30,6 +31,22 @@
                         case RuleGroup.WithinOneSpace: <Icon IconType=@IconType.One Color=@IconColor.Black /> break;
                         case RuleGroup.WithinTwoSpaces: <Icon IconType=@IconType.Two Color=@IconColor.Black /> break;
                         case RuleGroup.WithinThreeSpaces: <Icon IconType=@IconType.Three Color=@IconColor.Black /> break;
+                    }
+                }
+                @if(SelectedRule.RuleGroup is RuleGroup.OneOfTwo or RuleGroup.WithinOneSpace
+                    || SelectedRule.IconOne is RuleIcon.BearTerritory or RuleIcon.CougarTerritory)
+                {
+                    <Icon
+                        IconType=@IconType.Hexagon
+                        Color="SelectedRule.IconOne.GetColour()"
+                        OuterBorder=@SelectedRule.IconOne.GetBorder()
+                        InnerBorder="SelectedRule.IconOne == RuleIcon.AnimalTerritory ? RuleIcon.CougarTerritory.GetBorder() : null"
+                        Text=@SelectedRule.IconOne.GetInitial()
+                    />
+                    @if(SelectedRule.RuleGroup == RuleGroup.OneOfTwo)
+                    {
+                        <span>/</span>
+                        <Icon IconType=@IconType.Hexagon Color=@SelectedRule.IconTwo!.Value.GetColour() Text=@SelectedRule.IconTwo!.Value.GetInitial()/>
                     }
                 }
             </div>

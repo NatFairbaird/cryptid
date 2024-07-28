@@ -1,5 +1,7 @@
-﻿using Cryptid.Domain.Enums;
+﻿using Cryptid.Domain;
+using Cryptid.Domain.Enums;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Cryptid.Components
 {
@@ -10,6 +12,20 @@ namespace Cryptid.Components
 
         [Parameter]
         public IconColor Color { get; set; }
+
+        [Parameter]
+        public Border? OuterBorder { get; set; }
+
+        [Parameter]
+        public Border? InnerBorder { get; set; }
+
+        [Parameter]
+        public string? Text { get; set; }
+
+        [Inject]
+        IJSRuntime JS { get; set; }
+
+        private string Id => $"{IconType.ToString().ToLower()}-{Color.ToString().ToLower()}";
 
         private string IconClassName => IconType switch
         {
@@ -23,5 +39,37 @@ namespace Cryptid.Components
         };
 
         private string ColorClassName => Color.ToString().ToLower();
+
+        private string ColorCssName => Color switch
+        {
+            //if changing these, also update Icon.razor.css
+            IconColor.Blue => "cornflowerblue",
+            IconColor.Green => "forestgreen",
+            IconColor.Purple => "rebeccapurple",
+            IconColor.Yellow => "gold",
+            _ => ColorClassName
+        };
+
+        private bool IsCanvas => IconType == IconType.Hexagon;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if(IsCanvas)
+            {
+                var module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Icon.Razor.js");
+                var colour = ColorCssName;
+
+                if (InnerBorder == null)
+                {
+                    await module.InvokeVoidAsync("drawPolygon", $"canvas-{Id}", "11", "11", "6", colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString());
+                }
+                else
+                {
+                    await module.InvokeVoidAsync("drawNestedPolygon", $"canvas-{Id}", "11", "11", "6", colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString(), colour, InnerBorder.Color.ToString());
+                }
+            }
+
+            await base.OnAfterRenderAsync(firstRender);
+        }
     }
 }

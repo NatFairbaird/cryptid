@@ -3,10 +3,11 @@
     public enum IconType
     {
         Cross,
+        Hexagon,
         House,
         LessThanOrEqual,
         One,
         Three,
-        Two,
+        Two
     }
 }
