@@ -1,0 +1,11 @@
+﻿@if(IsCanvas)
+{
+    <div>
+        <canvas id="canvas-@Id" width="22" height="22"/>
+        <span style="position:absolute; margin-left: -16px; margin-top: 4px; font-size:12px; color: white;">@Text</span>
+    </div>
+}
+else
+{
+    <i class="fa-solid @IconClassName @ColorClassName"></i>
+}

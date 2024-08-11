@@ -1,0 +1,33 @@
+﻿/* If changing colours in this file, don't forget to update ColorCssName in Icon.razor.cs */
+
+.black {
+    color: black;
+}
+
+.blue {
+    color: cornflowerblue;
+}
+
+.green {
+    color: forestgreen;
+}
+
+.grey {
+    color: grey;
+}
+
+.purple {
+    color: rebeccapurple;
+}
+
+.red {
+    color: red;
+}
+
+.white {
+    color: white;
+}
+
+.yellow {
+    color: gold;
+}

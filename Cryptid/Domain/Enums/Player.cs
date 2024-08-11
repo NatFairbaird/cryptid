@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using Cryptid.Domain.PlayerRules;
+using System.Globalization;
 
-namespace Cryptid.Models.Enums
+namespace Cryptid.Domain.Enums
 {
     public enum Player
     {
@@ -21,5 +22,14 @@ namespace Cryptid.Models.Enums
             var info = CultureInfo.CurrentCulture.TextInfo;
             return Enum.Parse<Player>(info.ToTitleCase(strippedPlayer));
         }
+
+        public static Dictionary<int, Rule> GetRules(this Player player) => player switch
+        {
+            Player.Alpha => AlphaRules.Get(),
+            Player.Beta => BetaRules.Get(),
+            Player.Gamma => GammaRules.Get(),
+            Player.Delta => DeltaRules.Get(),
+            _ => throw new ArgumentOutOfRangeException(player.ToString())
+        };
     }
 }

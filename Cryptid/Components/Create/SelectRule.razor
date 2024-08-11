@@ -1,0 +1,71 @@
+﻿<div class="container">
+    <div>You are playing as @((MarkupString)Player.ToHtmlString())</div>
+    <EditForm Model="@GameToCreate" Context="CurrentEditContext" style="
+        display:flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;">
+        <DataAnnotationsValidator />
+        <label>
+            Enter your rule number:
+            <ValidationMessage For="() => GameToCreate.RuleNumber" />
+            <IntInput style="width: 50px" @bind-Value=GameToCreate.RuleNumber />
+        </label>
+        @if(CurrentEditContext.IsModified() && CurrentEditContext.Validate())
+        {
+            <div style="
+                height: 20px;
+                display:flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 4px;">
+                @if(SelectedRule.IsInverse)
+                {
+                    <Icon IconType=@IconType.Cross Color=@IconColor.Red />
+                }
+                @if(SelectedRule.RuleGroup is RuleGroup.WithinOneSpace or RuleGroup.WithinTwoSpaces or RuleGroup.WithinThreeSpaces)
+                {
+                    <Icon IconType=@IconType.LessThanOrEqual Color=@IconColor.Black />
+                    @switch(SelectedRule.RuleGroup)
+                    {
+                        case RuleGroup.WithinOneSpace: <Icon IconType=@IconType.One Color=@IconColor.Black /> break;
+                        case RuleGroup.WithinTwoSpaces: <Icon IconType=@IconType.Two Color=@IconColor.Black /> break;
+                        case RuleGroup.WithinThreeSpaces: <Icon IconType=@IconType.Three Color=@IconColor.Black /> break;
+                    }
+                }
+                @if(SelectedRule.RuleGroup is RuleGroup.OneOfTwo or RuleGroup.WithinOneSpace
+                    || SelectedRule.IconOne is RuleIcon.BearTerritory or RuleIcon.CougarTerritory)
+                {
+                    <Icon
+                        IconType=@IconType.Hexagon
+                        Color="SelectedRule.IconOne.GetColour()"
+                        OuterBorder=@SelectedRule.IconOne.GetBorder()
+                        InnerBorder="SelectedRule.IconOne == RuleIcon.AnimalTerritory ? RuleIcon.CougarTerritory.GetBorder() : null"
+                        Text=@SelectedRule.IconOne.GetInitial()
+                    />
+                    @if(SelectedRule.RuleGroup == RuleGroup.OneOfTwo)
+                    {
+                        <span>/</span>
+                        <Icon IconType=@IconType.Hexagon Color=@SelectedRule.IconTwo!.Value.GetColour() Text=@SelectedRule.IconTwo!.Value.GetInitial()/>
+                    }
+                }
+                @if(SelectedRule.IconOne is RuleIcon.StandingStone or RuleIcon.AbandonedShack)
+                {
+                    <Icon
+                        IconType="SelectedRule.IconOne == RuleIcon.StandingStone ? IconType.Octagon : IconType.Triangle"
+                        Color=@IconColor.Grey
+                        OuterBorder=@new(LineType.Solid, IconColor.Black)
+                    />
+                }
+                @if(SelectedRule.RuleGroup == RuleGroup.WithinThreeSpaces)
+                {
+                    <Icon IconType=@IconType.Octagon OuterBorder=@new(LineType.Solid, IconColor.Black) Color=@SelectedRule.IconOne.GetColour() />
+                    <span>/</span>
+                    <Icon IconType=@IconType.Triangle OuterBorder=@new(LineType.Solid, IconColor.Black) Color=@SelectedRule.IconOne.GetColour() />
+                }
+            </div>
+            <div style="text-align: justify; text-justify: inter-word;">@SelectedRule.Text</div>
+            <Button DisplayValue="Start Game"/>
+        }
+    </EditForm>
+</div>
