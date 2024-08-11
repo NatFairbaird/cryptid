@@ -6,8 +6,10 @@
         Hexagon,
         House,
         LessThanOrEqual,
+        Octagon,
         One,
         Three,
+        Triangle,
         Two
     }
 }

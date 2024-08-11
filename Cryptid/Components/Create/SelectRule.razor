@@ -49,6 +49,20 @@
                         <Icon IconType=@IconType.Hexagon Color=@SelectedRule.IconTwo!.Value.GetColour() Text=@SelectedRule.IconTwo!.Value.GetInitial()/>
                     }
                 }
+                @if(SelectedRule.IconOne is RuleIcon.StandingStone or RuleIcon.AbandonedShack)
+                {
+                    <Icon
+                        IconType="SelectedRule.IconOne == RuleIcon.StandingStone ? IconType.Octagon : IconType.Triangle"
+                        Color=@IconColor.Grey
+                        OuterBorder=@new(LineType.Solid, IconColor.Black)
+                    />
+                }
+                @if(SelectedRule.RuleGroup == RuleGroup.WithinThreeSpaces)
+                {
+                    <Icon IconType=@IconType.Octagon OuterBorder=@new(LineType.Solid, IconColor.Black) Color=@SelectedRule.IconOne.GetColour() />
+                    <span>/</span>
+                    <Icon IconType=@IconType.Triangle OuterBorder=@new(LineType.Solid, IconColor.Black) Color=@SelectedRule.IconOne.GetColour() />
+                }
             </div>
             <div style="text-align: justify; text-justify: inter-word;">@SelectedRule.Text</div>
             <Button DisplayValue="Start Game"/>

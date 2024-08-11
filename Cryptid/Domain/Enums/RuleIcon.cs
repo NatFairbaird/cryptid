@@ -53,6 +53,10 @@
             RuleIcon.Water => IconColor.Blue,
             RuleIcon.Swamp => IconColor.Purple,
             RuleIcon.Mountain => IconColor.Grey,
+            RuleIcon.BlueAbandonedShack or RuleIcon.BlueStandingStone => IconColor.Blue,
+            RuleIcon.GreenAbandonedShack or RuleIcon.GreenStandingStone => IconColor.Green,
+            RuleIcon.WhiteAbandonedShack or RuleIcon.WhiteStandingStone => IconColor.White,
+            RuleIcon.BlackAbandonedShack or RuleIcon.BlackStandingStone => IconColor.Black,
             _ => IconColor.White
         };
 

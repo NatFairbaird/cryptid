@@ -50,7 +50,7 @@ namespace Cryptid.Components
             _ => ColorClassName
         };
 
-        private bool IsCanvas => IconType == IconType.Hexagon;
+        private bool IsCanvas => IconType is IconType.Hexagon or IconType.Octagon or IconType.Triangle;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -58,14 +58,20 @@ namespace Cryptid.Components
             {
                 var module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Icon.Razor.js");
                 var colour = ColorCssName;
+                var numberOfSides = IconType switch
+                {
+                    IconType.Hexagon => "6",
+                    IconType.Octagon => "8",
+                    IconType.Triangle => "3"
+                };
 
                 if (InnerBorder == null)
                 {
-                    await module.InvokeVoidAsync("drawPolygon", $"canvas-{Id}", "11", "11", "6", colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString());
+                    await module.InvokeVoidAsync("drawPolygon", $"canvas-{Id}", "11", "11", numberOfSides, colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString());
                 }
                 else
                 {
-                    await module.InvokeVoidAsync("drawNestedPolygon", $"canvas-{Id}", "11", "11", "6", colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString(), colour, InnerBorder.Color.ToString());
+                    await module.InvokeVoidAsync("drawNestedPolygon", $"canvas-{Id}", "11", "11", numberOfSides, colour, OuterBorder?.Color.ToString(), (OuterBorder?.LineType == LineType.Dashed).ToString(), colour, InnerBorder.Color.ToString());
                 }
             }
 
