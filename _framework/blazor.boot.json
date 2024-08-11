@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Cryptid.dll": "sha256-ExN5H08hVidMwN3nTxekn6BnzUMljDU8VHGgyQAmKio=",
+      "Cryptid.dll": "sha256-ANz5nyl8LxejZYIPit2a+Aue7DfGWtNTUChmelZ2OCQ=",
       "Microsoft.AspNetCore.Components.dll": "sha256-dwp9iEbrb6mAiTYZ+In42KepjVcJg3g0QdRlneprPm0=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-0+o7ax\/GUCPfjn6TAn2PyVou4T9Z4dG0SGbJDEDPCAI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-xSW6tOukJc+lgkkJamg\/2r4x4NLPp\/pz2lV7IUWVFxE=",
