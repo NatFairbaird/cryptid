@@ -6,6 +6,9 @@
     border-radius: 4px;
     cursor: pointer;
     color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    border: none;
 }
 
 .button.disabled[b-iwfkbayi00] {
@@ -48,6 +51,66 @@
 .select-item.disabled[b-tx1rx9yp40] {
     color: grey;
     cursor: not-allowed;
+}
+/* /Components/Create/SelectRule.razor.rz.scp.css */
+.container[b-5pfh0kyo7q] {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+}
+
+label[b-5pfh0kyo7q] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+/* /Components/Icon.razor.rz.scp.css */
+/* If changing colours in this file, don't forget to update ColorCssName in Icon.razor.cs */
+
+.black[b-fipzy9suwp] {
+    color: black;
+}
+
+.blue[b-fipzy9suwp] {
+    color: cornflowerblue;
+}
+
+.green[b-fipzy9suwp] {
+    color: forestgreen;
+}
+
+.grey[b-fipzy9suwp] {
+    color: grey;
+}
+
+.purple[b-fipzy9suwp] {
+    color: rebeccapurple;
+}
+
+.red[b-fipzy9suwp] {
+    color: red;
+}
+
+.white[b-fipzy9suwp] {
+    color: white;
+}
+
+.yellow[b-fipzy9suwp] {
+    color: gold;
+}
+/* /Components/IntInput.razor.rz.scp.css */
+input[b-zfankjehh0] {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+input.modified[b-zfankjehh0] {
+    border-radius: 2px;
 }
 /* /Pages/Index.razor.rz.scp.css */
 .container[b-1n5gxd2z59] {
