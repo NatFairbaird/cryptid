@@ -56,7 +56,7 @@ namespace Cryptid.Components
         {
             if(IsCanvas)
             {
-                var module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Icon.Razor.js");
+                var module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Icon.razor.js");
                 var colour = ColorCssName;
                 var numberOfSides = IconType switch
                 {
