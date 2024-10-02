@@ -7,11 +7,10 @@
         align-items: center;">
         <DataAnnotationsValidator />
         <label>
-            Enter your rule number:
-            <ValidationMessage For="() => GameToCreate.RuleNumber" />
+            Enter your rule number (a number between 1 and 96):
             <IntInput style="width: 50px" @bind-Value=GameToCreate.RuleNumber />
         </label>
-        @if(CurrentEditContext.IsModified() && CurrentEditContext.Validate())
+        @if(IsInRange)
         {
             <div style="
                 height: 20px;

@@ -14,12 +14,13 @@ namespace Cryptid.Components.Create
 
         private Dictionary<int, Rule> PlayerRules => Player.GetRules();
 
-        private Rule SelectedRule => PlayerRules[GameToCreate.RuleNumber];
+        private Rule? SelectedRule => IsInRange ? PlayerRules[GameToCreate.RuleNumber!.Value] : null;
+
+        private bool IsInRange => GameToCreate.RuleNumber is >= 1 and <= 96;
 
         private class Game
         {
-            [Required, Range(1, 96, ErrorMessage = "Rule Number must be between 1 and 96")]
-            public int RuleNumber { get; set; }
+            public int? RuleNumber { get; set; }
         }
     }
 }
