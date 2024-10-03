@@ -29,6 +29,7 @@ namespace Cryptid.Domain.Enums
             Player.Beta => BetaRules.Get(),
             Player.Gamma => GammaRules.Get(),
             Player.Delta => DeltaRules.Get(),
+            Player.Epsilon => EpsilonRules.Get(),
             _ => throw new ArgumentOutOfRangeException(player.ToString())
         };
     }
